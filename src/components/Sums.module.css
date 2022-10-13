@@ -1,0 +1,27 @@
+.sums {
+  font-size: 1.6rem;
+  margin: 10px;
+  display: flex;
+  gap: 2rem;
+  color: gold;
+  font-weight: 600;
+  align-self: center;
+  letter-spacing: 3px;
+}
+
+.questionNumbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.questionSums {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.white {
+  color: white;
+}

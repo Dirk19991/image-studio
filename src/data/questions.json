@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "question": "Какой HTML-элемент является наименьшим элементом заголовков секций?",
+    "price": 500,
+    "answers": ["h5", "h6", "h7", "h8"],
+    "correctAnswer": "h6"
+  },
+  {
+    "id": 2,
+    "question": "Какой метод позволяет добавить элемент в начало массива?",
+    "price": 1000,
+    "answers": ["push", "shift", "unshift", "pop"],
+    "correctAnswer": "unshift"
+  },
+  {
+    "id": 3,
+    "question": "Book",
+    "price": 2000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 4,
+    "question": "Book",
+    "price": 3000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 5,
+    "question": "Book",
+    "price": 5000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 6,
+    "question": "Book",
+    "price": 10000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 7,
+    "question": "Book",
+    "price": 15000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 8,
+    "question": "Book",
+    "price": 25000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 9,
+    "question": "Book",
+    "price": 50000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 10,
+    "question": "Book",
+    "price": 100000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 11,
+    "question": "Book",
+    "price": 200000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 12,
+    "question": "Book",
+    "price": 400000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 13,
+    "question": "Book",
+    "price": 800000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 14,
+    "question": "Book",
+    "price": 1500000,
+    "answers": [""],
+    "correctAnswer": ""
+  },
+  {
+    "id": 15,
+    "question": "Book",
+    "price": 3000000,
+    "answers": [""],
+    "correctAnswer": ""
+  }
+]
