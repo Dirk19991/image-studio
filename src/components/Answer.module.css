@@ -1,5 +1,20 @@
 .answer {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 2.5rem;
+  align-items: center;
   width: 45%;
   height: 70px;
   background-color: black;
+  margin-bottom: 1rem;
+  border: 3px solid rgb(99, 208, 244);
+  border-radius: 200px;
+  box-shadow: inset 0 0 10px 3px rgb(99, 208, 244);
+  cursor: pointer;
+}
+
+.letter {
+  color: gold;
+  white-space: pre;
 }

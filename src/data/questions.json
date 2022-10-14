@@ -15,93 +15,113 @@
   },
   {
     "id": 3,
-    "question": "Book",
+    "question": "Какой символьный класс регулярных выражений испольуется для цифр?",
     "price": 2000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["\\o", "\\s", "\\w", "\\d"],
+    "correctAnswer": "\\d"
   },
   {
     "id": 4,
-    "question": "Book",
+    "question": "Какой метод используется для отмены выполнения таймера в JavaScript?",
     "price": 3000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": [
+      "clearTimeout()",
+      "cleanTimeout()",
+      "removeTimeout()",
+      "deleteTimeout()"
+    ],
+    "correctAnswer": "clearTimeout()"
   },
   {
     "id": 5,
-    "question": "Book",
+    "question": "Какого из этих терминов не существует?",
     "price": 5000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": [
+      "DOM (Document Object Model",
+      "CSSOM (CSS Object Model)",
+      "NOM (Navigator Object Model)",
+      "BOM (Browser Object Model)"
+    ],
+    "correctAnswer": "NOM (Navigator Object Model)"
   },
   {
     "id": 6,
-    "question": "Book",
+    "question": "Какой метод объекта возвращает массив пар [ключ, значение]?",
     "price": 10000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": [
+      "Object.keys",
+      "Object.values",
+      "Object.entries",
+      "Object.pairs"
+    ],
+    "correctAnswer": "Object.entries"
   },
   {
     "id": 7,
-    "question": "Book",
+    "question": "Какой из этих методов объекта Math НЕ используется для округления чисел?",
     "price": 15000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["Math.ceil()", "Math.floor()", "Math.round()", "Math.sign()"],
+    "correctAnswer": "Math.sign()"
   },
   {
     "id": 8,
-    "question": "Book",
+    "question": "Какое ключевое слово позволяет отбрасывать тень внутрь элемента в CSS-свойстве box-shadow?",
     "price": 25000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["onset", "inset", "offset", "set"],
+    "correctAnswer": "inset"
   },
   {
     "id": 9,
-    "question": "Book",
+    "question": "Какой метод объектов предотвращает добавление новых свойств к объекту и делает все существующие свойства не настраиваемыми? При этом значения представленных свойств всё ещё могут изменяться",
     "price": 50000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": [
+      "Object.freeze()",
+      "Object.preventExtensions()",
+      "Object.close()",
+      "Object.seal()"
+    ],
+    "correctAnswer": "Object.seal()"
   },
   {
     "id": 10,
-    "question": "Book",
+    "question": "Какое шестнадцатеричное значение соответствует цвету фуксия (Fuchsia)?",
     "price": 100000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["#00FFFF", "#0000FF", "#00FF00", "#FF00FF"],
+    "correctAnswer": "#FF00FF"
   },
   {
     "id": 11,
-    "question": "Book",
+    "question": "Какое шестнадцатеричное значение соответствует цвету фуксия (Fuchsia)?",
     "price": 200000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["#00FFFF", "#0000FF", "#00FF00", "#FF00FF"],
+    "correctAnswer": "#FF00FF"
   },
   {
     "id": 12,
-    "question": "Book",
+    "question": "Какое шестнадцатеричное значение соответствует цвету фуксия (Fuchsia)?",
     "price": 400000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["#00FFFF", "#0000FF", "#00FF00", "#FF00FF"],
+    "correctAnswer": "#FF00FF"
   },
   {
     "id": 13,
-    "question": "Book",
+    "question": "Какое шестнадцатеричное значение соответствует цвету фуксия (Fuchsia)?",
     "price": 800000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["#00FFFF", "#0000FF", "#00FF00", "#FF00FF"],
+    "correctAnswer": "#FF00FF"
   },
   {
     "id": 14,
-    "question": "Book",
+    "question": "Какое шестнадцатеричное значение соответствует цвету фуксия (Fuchsia)?",
     "price": 1500000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["#00FFFF", "#0000FF", "#00FF00", "#FF00FF"],
+    "correctAnswer": "#FF00FF"
   },
   {
     "id": 15,
-    "question": "Book",
+    "question": "Какая из этих единиц измерения является наибольшей?",
     "price": 3000000,
-    "answers": [""],
-    "correctAnswer": ""
+    "answers": ["1px", "1mm", "1pt", "1pc"],
+    "correctAnswer": "1pc"
   }
 ]

@@ -1,0 +1,41 @@
+.start {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 100px;
+  background-color: black;
+  border: 3px solid rgb(99, 208, 244);
+  border-radius: 200px;
+  box-shadow: inset 0 0 10px 3px rgb(99, 208, 244);
+  cursor: pointer;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 20%;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.animation {
+  animation: smoothTransition 0.7s ease-in-out;
+}
+
+@keyframes smoothTransition {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
