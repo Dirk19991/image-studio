@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export default function QuestionsPanel({ progress, setProgress }) {
   const [answered, setAnswered] = useState(false);
+  const [correct, setCorrect] = useState(false);
 
   const answers = data.filter((elem) => elem.id === progress)[0].answers;
 
@@ -18,6 +19,8 @@ export default function QuestionsPanel({ progress, setProgress }) {
           <Answer
             answered={answered}
             setAnswered={setAnswered}
+            correct={correct}
+            setCorrect={setCorrect}
             key={index}
             answer={answer}
             index={index}

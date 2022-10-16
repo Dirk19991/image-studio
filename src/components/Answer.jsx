@@ -10,20 +10,21 @@ export default function Answer({
   setProgress,
   answered,
   setAnswered,
+  correct,
+  setCorrect,
 }) {
   const answerLetters = ["A", "B", "C", "D"];
   const correctAnswer = data.filter((elem) => elem.id === progress)[0]
     .correctAnswer;
 
   const [clicked, setClicked] = useState(false);
-  const [correct, setCorrect] = useState(false);
 
   let cx = classNames.bind(classes);
 
   let className = cx({
     answer: true,
     clicked: clicked === true,
-    correct: correct === true,
+    correct: correct === true && answer === correctAnswer,
   });
 
   return (
@@ -44,9 +45,11 @@ export default function Answer({
                     setAnswered(false);
                     setClicked(false);
                     setCorrect(false);
-                  }, 700);
+                  }, 1000);
+                } else {
+                  setCorrect(true);
                 }
-              }, 700);
+              }, 1000);
             }
       }
       className={className}

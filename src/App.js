@@ -17,7 +17,7 @@ function App() {
         )}
       </div>
 
-      <ProgressPanel />
+      <ProgressPanel progress={progress} setProgress={setProgress} />
     </div>
   );
 }

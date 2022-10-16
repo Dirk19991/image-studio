@@ -1,6 +1,8 @@
 import data from "../data/questions.json";
 import classes from "./Sums.module.css";
-export default function Sums() {
+import classNames from "classnames/bind";
+
+export default function Sums({ progress, setProgress }) {
   return (
     <div className={classes.sums}>
       <div className={classes.questionNumbers}>
