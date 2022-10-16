@@ -18,3 +18,11 @@
   color: gold;
   white-space: pre;
 }
+
+.clicked {
+  background-color: rgb(255, 165, 0, 0.8);
+}
+
+.correct {
+  background-color: rgba(47, 255, 92, 0.822);
+}

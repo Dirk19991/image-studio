@@ -8,9 +8,11 @@ export default function Sums() {
           .sort((a, b) => b.price - a.price)
           .map((elem) =>
             elem.id % 5 === 0 ? (
-              <div className={classes.white}>{elem.id}</div>
+              <div key={elem.id} className={classes.white}>
+                {elem.id}
+              </div>
             ) : (
-              <div>{elem.id}</div>
+              <div key={elem.id}>{elem.id}</div>
             )
           )}
       </div>
@@ -19,11 +21,13 @@ export default function Sums() {
           .sort((a, b) => b.price - a.price)
           .map((elem) =>
             elem.id % 5 === 0 ? (
-              <div className={classes.white}>
+              <div key={elem.id} className={classes.white}>
                 {new Intl.NumberFormat("en-US").format(elem.price)}
               </div>
             ) : (
-              <div>{new Intl.NumberFormat("en-US").format(elem.price)}</div>
+              <div key={elem.id}>
+                {new Intl.NumberFormat("en-US").format(elem.price)}
+              </div>
             )
           )}
       </div>
