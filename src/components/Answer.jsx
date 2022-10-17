@@ -12,10 +12,12 @@ export default function Answer({
   setAnswered,
   correct,
   setCorrect,
+  fiftyFifty,
+  setFiftyFifty,
+  correctAnswer,
+  incorrectAnswers,
 }) {
   const answerLetters = ["A", "B", "C", "D"];
-  const correctAnswer = data.filter((elem) => elem.id === progress)[0]
-    .correctAnswer;
 
   const [clicked, setClicked] = useState(false);
 
@@ -25,6 +27,9 @@ export default function Answer({
     answer: true,
     clicked: clicked === true,
     correct: correct === true && answer === correctAnswer,
+    invisible:
+      fiftyFifty.active === true &&
+      (answer === incorrectAnswers[0] || answer === incorrectAnswers[1]),
   });
 
   return (
@@ -45,6 +50,10 @@ export default function Answer({
                     setAnswered(false);
                     setClicked(false);
                     setCorrect(false);
+
+                    if (fiftyFifty.active) {
+                      setFiftyFifty({ active: false, used: true });
+                    }
                   }, 1000);
                 } else {
                   setCorrect(true);
@@ -54,7 +63,8 @@ export default function Answer({
       }
       className={className}
     >
-      <span className={classes.letter}>{answerLetters[index]}: </span> {answer}
+      <span className={classes.letter}>{answerLetters[index]}: </span>{" "}
+      <span>{answer}</span>
     </div>
   );
 }

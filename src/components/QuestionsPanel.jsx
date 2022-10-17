@@ -4,7 +4,14 @@ import Answer from "./Answer";
 import data from "../data/questions.json";
 import { useState } from "react";
 
-export default function QuestionsPanel({ progress, setProgress }) {
+export default function QuestionsPanel({
+  progress,
+  setProgress,
+  fiftyFifty,
+  setFiftyFifty,
+  correctAnswer,
+  incorrectAnswers,
+}) {
   const [answered, setAnswered] = useState(false);
   const [correct, setCorrect] = useState(false);
 
@@ -17,6 +24,8 @@ export default function QuestionsPanel({ progress, setProgress }) {
       <div className={classes.answers}>
         {answers.map((answer, index) => (
           <Answer
+            fiftyFifty={fiftyFifty}
+            setFiftyFifty={setFiftyFifty}
             answered={answered}
             setAnswered={setAnswered}
             correct={correct}
@@ -26,6 +35,8 @@ export default function QuestionsPanel({ progress, setProgress }) {
             index={index}
             progress={progress}
             setProgress={setProgress}
+            correctAnswer={correctAnswer}
+            incorrectAnswers={incorrectAnswers}
           />
         ))}
       </div>

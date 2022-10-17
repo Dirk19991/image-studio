@@ -13,6 +13,10 @@
   border: 5px solid rgb(99, 208, 244);
 }
 
+.helpUsed {
+  opacity: 0.3;
+}
+
 .wrapper {
   display: flex;
   justify-content: space-around;
