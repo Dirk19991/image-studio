@@ -9,6 +9,9 @@ import data from "./data/questions.json";
 function App() {
   const [progress, setProgress] = useState(null);
   const [fiftyFifty, setFiftyFifty] = useState({ active: false, used: false });
+  const [friendCall, setFriendCall] = useState({ used: false });
+  const [audienceHelp, setAudienceHelp] = useState({ used: false });
+
   const correctAnswer =
     progress !== null &&
     data.filter((elem) => elem.id === progress)[0].correctAnswer;
@@ -38,6 +41,10 @@ function App() {
         setFiftyFifty={setFiftyFifty}
         progress={progress}
         setProgress={setProgress}
+        friendCall={friendCall}
+        setFriendCall={setFriendCall}
+        audienceHelp={audienceHelp}
+        setAudienceHelp={setAudienceHelp}
       />
     </div>
   );
