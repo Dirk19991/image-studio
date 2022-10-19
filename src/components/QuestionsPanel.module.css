@@ -1,5 +1,16 @@
 .questions {
+  height: 100%;
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.questionsNoWin {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .answers {
@@ -16,4 +27,36 @@
   align-items: center;
   width: 100%;
   height: 100px;
+}
+
+.win {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.button {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  align-items: center;
+  width: 250px;
+  height: 70px;
+  background-color: black;
+  margin-bottom: 1rem;
+  border: 3px solid rgb(99, 208, 244);
+  border-radius: 200px;
+  box-shadow: inset 0 0 10px 3px rgb(99, 208, 244);
+  cursor: pointer;
+  color: white;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 0.5rem;
 }
