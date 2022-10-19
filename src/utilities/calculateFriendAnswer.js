@@ -30,5 +30,3 @@ export default function calculateFriendAnswer(progress) {
     }
   }
 }
-
-console.log(calculateFriendAnswer(1));

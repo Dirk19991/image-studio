@@ -1,7 +1,6 @@
 import classes from "./Answer.module.css";
-import { useState } from "react";
-import data from "../data/questions.json";
 import classNames from "classnames/bind";
+import { useState, useEffect } from "react";
 
 export default function Answer({
   answer,
@@ -21,12 +20,20 @@ export default function Answer({
 
   const [clicked, setClicked] = useState(false);
 
+  useEffect(() => {
+    setClicked(false);
+    setAnswered(false);
+    setFiftyFifty((prev) => {
+      return { ...prev, active: false };
+    });
+  }, [progress, setAnswered, setFiftyFifty]);
+
   let cx = classNames.bind(classes);
 
   let className = cx({
     answer: true,
     clicked: clicked === true,
-    correct: correct === true && answer === correctAnswer,
+    correct: correct.correctHighlighted === true && answer === correctAnswer,
     invisible:
       fiftyFifty.active === true &&
       (answer === incorrectAnswers[0] || answer === incorrectAnswers[1]),
@@ -42,21 +49,39 @@ export default function Answer({
               setClicked(true);
 
               setTimeout(() => {
-                if (answer === correctAnswer) {
-                  setCorrect(true);
+                if (answer === correctAnswer && progress === 15) {
+                  setCorrect({
+                    correctHighlighted: true,
+                    lostGame: false,
+                    finishedGame: true,
+                  });
+                } else if (answer === correctAnswer) {
+                  setCorrect({
+                    correctHighlighted: true,
+                    lostGame: false,
+                    finishedGame: false,
+                  });
 
                   setTimeout(() => {
                     setProgress((prev) => prev + 1);
                     setAnswered(false);
                     setClicked(false);
-                    setCorrect(false);
+                    setCorrect({
+                      correctHighlighted: false,
+                      lostGame: false,
+                      finishedGame: false,
+                    });
 
                     if (fiftyFifty.active) {
                       setFiftyFifty({ active: false, used: true });
                     }
                   }, 1000);
                 } else {
-                  setCorrect(true);
+                  setCorrect({
+                    correctHighlighted: true,
+                    lostGame: true,
+                    finishedGame: true,
+                  });
                 }
               }, 1000);
             }
