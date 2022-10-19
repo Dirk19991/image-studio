@@ -7,7 +7,7 @@ import shuffle from "./utilities/shuffle";
 import data from "./data/questions.json";
 
 function App() {
-  const [progress, setProgress] = useState(7);
+  const [progress, setProgress] = useState(null);
   const [fiftyFifty, setFiftyFifty] = useState({ active: false, used: false });
   const [friendCall, setFriendCall] = useState({ used: false });
   const [audienceHelp, setAudienceHelp] = useState({ used: false });
