@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/who-wants-to-be-a-millionaire/static/css/main.0a6f97e4.css",
+    "main.js": "/who-wants-to-be-a-millionaire/static/js/main.5f7ef2fb.js",
+    "static/media/494664 (1).webp": "/who-wants-to-be-a-millionaire/static/media/494664 (1).7681bb3e014ea38a280f.webp",
+    "index.html": "/who-wants-to-be-a-millionaire/index.html",
+    "main.0a6f97e4.css.map": "/who-wants-to-be-a-millionaire/static/css/main.0a6f97e4.css.map",
+    "main.5f7ef2fb.js.map": "/who-wants-to-be-a-millionaire/static/js/main.5f7ef2fb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a6f97e4.css",
+    "static/js/main.5f7ef2fb.js"
+  ]
+}
