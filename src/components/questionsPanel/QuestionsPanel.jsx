@@ -3,11 +3,11 @@ import Question from './Question';
 import Answer from './Answer';
 import data from '../../data/questions.json';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProgress } from '../../features/progress/progressSlice';
 import calculatePrize from '../../utilities/calculatePrize';
 
 export default function QuestionsPanel({
-  progress,
-  setProgress,
   fiftyFifty,
   setFiftyFifty,
   setFriendCall,
@@ -21,9 +21,11 @@ export default function QuestionsPanel({
     lostGame: false,
     finishedGame: false,
   });
+  const reduxProgress = useSelector((state) => state.progress.progress);
+  const dispatch = useDispatch();
 
-  const answers = data.filter((elem) => elem.id === progress)[0].answers;
-  const prize = calculatePrize(progress, correct.lostGame);
+  const answers = data.filter((elem) => elem.id === reduxProgress)[0].answers;
+  const prize = calculatePrize(reduxProgress, correct.lostGame);
 
   return (
     <div
@@ -37,7 +39,7 @@ export default function QuestionsPanel({
           <div className={classes.buttonWrapper}>
             <button
               onClick={() => {
-                setProgress(null);
+                dispatch(setProgress(null));
                 setCorrect({
                   correctHighlighted: false,
                   lostGame: false,
@@ -51,10 +53,10 @@ export default function QuestionsPanel({
             >
               Сыграть снова
             </button>
-            {progress !== 15 && (
+            {reduxProgress !== 15 && (
               <button
                 onClick={() => {
-                  setProgress(progress + 1);
+                  dispatch(setProgress(reduxProgress + 1));
                   setCorrect({
                     correctHighlighted: false,
                     lostGame: false,
@@ -70,8 +72,8 @@ export default function QuestionsPanel({
         </div>
       )}
       <div>
-        <div className={classes.header}>Вопрос {progress}</div>
-        <Question progress={progress} />
+        <div className={classes.header}>Вопрос {reduxProgress}</div>
+        <Question />
         <div className={classes.answers}>
           {answers.map((answer, index) => (
             <Answer
@@ -84,8 +86,6 @@ export default function QuestionsPanel({
               key={index}
               answer={answer}
               index={index}
-              progress={progress}
-              setProgress={setProgress}
               correctAnswer={correctAnswer}
               incorrectAnswers={incorrectAnswers}
             />

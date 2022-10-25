@@ -1,8 +1,16 @@
-import { useState } from "react";
-import classes from "./StartScreen.module.css";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import classes from './StartScreen.module.css';
+import { setProgress } from '../../features/progress/progressSlice';
+import { useSelector } from 'react-redux';
 
-export default function StartScreen({ setProgress }) {
+export default function StartScreen() {
   const [animation, setAnimation] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const reduxProgress = useSelector((state) => state.progress.progress);
+  console.log(reduxProgress);
 
   return (
     <div
@@ -17,14 +25,13 @@ export default function StartScreen({ setProgress }) {
         onClick={() => {
           setAnimation(true);
           setTimeout(() => {
-            setProgress(1);
+            dispatch(setProgress(1));
           }, 600);
         }}
         className={classes.start}
       >
         Начать игру
       </div>
-      ;
     </div>
   );
 }
