@@ -1,8 +1,8 @@
-import styles from "./ProgressPanel.module.css";
-import Help from "./Help";
-import Sums from "./Sums";
-import calculateFriendAnswer from "../utilities/calculateFriendAnswer";
-import calculateAudiencePercentage from "../utilities/calculateAudiencePercentage";
+import styles from './ProgressPanel.module.css';
+import Help from './Help';
+import Sums from './Sums';
+import calculateFriendAnswer from '../../utilities/calculateFriendAnswer';
+import calculateAudiencePercentage from '../../utilities/calculateAudiencePercentage';
 
 export default function ProgressPanel({
   progress,

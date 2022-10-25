@@ -1,9 +1,9 @@
-import classes from "./QuestionsPanel.module.css";
-import Question from "./Question";
-import Answer from "./Answer";
-import data from "../data/questions.json";
-import { useState } from "react";
-import calculatePrize from "../utilities/calculatePrize";
+import classes from './QuestionsPanel.module.css';
+import Question from './Question';
+import Answer from './Answer';
+import data from '../../data/questions.json';
+import { useState } from 'react';
+import calculatePrize from '../../utilities/calculatePrize';
 
 export default function QuestionsPanel({
   progress,
@@ -37,7 +37,7 @@ export default function QuestionsPanel({
           <div className={classes.buttonWrapper}>
             <button
               onClick={() => {
-                setProgress(1);
+                setProgress(null);
                 setCorrect({
                   correctHighlighted: false,
                   lostGame: false,

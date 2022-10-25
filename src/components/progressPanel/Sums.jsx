@@ -1,6 +1,6 @@
-import data from "../data/questions.json";
-import classes from "./Sums.module.css";
-import classNames from "classnames/bind";
+import data from '../../data/questions.json';
+import classes from './Sums.module.css';
+import classNames from 'classnames/bind';
 
 export default function Sums({ progress, setProgress }) {
   return (
@@ -34,11 +34,11 @@ export default function Sums({ progress, setProgress }) {
           .map((elem) =>
             elem.id % 5 === 0 ? (
               <div key={elem.id} className={classes.white}>
-                {new Intl.NumberFormat("en-US").format(elem.price)}
+                {new Intl.NumberFormat('en-US').format(elem.price)}
               </div>
             ) : (
               <div key={elem.id}>
-                {new Intl.NumberFormat("en-US").format(elem.price)}
+                {new Intl.NumberFormat('en-US').format(elem.price)}
               </div>
             )
           )}

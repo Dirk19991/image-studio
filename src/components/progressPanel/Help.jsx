@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
-import classes from "./Help.module.css";
-import HelpModal from "./HelpModal";
-import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
+import classes from './Help.module.css';
+import HelpModal from '../helpModal/HelpModal';
+import { useState } from 'react';
 
 export default function Help({
   fiftyFifty,
@@ -21,9 +21,9 @@ export default function Help({
   const handleClose = (type) => setOpen({ open: false, type: type });
 
   let helpMessage;
-  if (open.type === "friendCall") {
+  if (open.type === 'friendCall') {
     helpMessage = `Ваш друг думает, что правильный ответ - ${friendAnswer}`;
-  } else if (open.type === "audienceHelp") {
+  } else if (open.type === 'audienceHelp') {
     helpMessage = `${audiencePercentage}% зрителей считает, что правильный ответ - ${friendAnswer}`;
   }
 
@@ -53,7 +53,7 @@ export default function Help({
         <div
           onClick={() => {
             if (progress !== null && !friendCall.used) {
-              handleOpen("friendCall");
+              handleOpen('friendCall');
               setFriendCall({ used: true });
             }
           }}
@@ -63,12 +63,12 @@ export default function Help({
               : `${classes.help}`
           }
         >
-          <FontAwesomeIcon icon={faPhone} size="xl" />
+          <FontAwesomeIcon icon={faPhone} size='xl' />
         </div>
         <div
           onClick={() => {
             if (progress !== null && !audienceHelp.used) {
-              handleOpen("audienceHelp");
+              handleOpen('audienceHelp');
               setAudienceHelp({ used: true });
             }
           }}
@@ -78,7 +78,7 @@ export default function Help({
               : `${classes.help}`
           }
         >
-          <FontAwesomeIcon icon={faPeopleGroup} size="xl" />
+          <FontAwesomeIcon icon={faPeopleGroup} size='xl' />
         </div>
       </div>
     </>

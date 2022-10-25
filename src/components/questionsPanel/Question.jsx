@@ -1,5 +1,5 @@
-import classes from "./Question.module.css";
-import data from "../data/questions.json";
+import classes from './Question.module.css';
+import data from '../../data/questions.json';
 
 export default function Question({ progress }) {
   const question = data.filter((elem) => elem.id === progress)[0].question;
