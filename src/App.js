@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
-import classes from "./App.module.css";
-import ProgressPanel from "./components/ProgressPanel";
-import QuestionsPanel from "./components/QuestionsPanel";
-import StartScreen from "./components/StartScreen";
-import shuffle from "./utilities/shuffle";
-import data from "./data/questions.json";
+import { useMemo, useState } from 'react';
+import classes from './App.module.css';
+import ProgressPanel from './components/progressPanel/ProgressPanel';
+import QuestionsPanel from './components/questionsPanel/QuestionsPanel';
+import StartScreen from './components/startScreen/StartScreen';
+import shuffle from './utilities/shuffle';
+import data from './data/questions.json';
 
 function App() {
   const [progress, setProgress] = useState(null);
@@ -15,7 +15,7 @@ function App() {
   const memoizedIncorrectAnswers = useMemo(() => {
     if (progress === null) return;
 
-    console.log("counting");
+    console.log('counting');
     const one = shuffle(
       data.filter((elem) => elem.id === progress)[0].incorrectAnswers
     );

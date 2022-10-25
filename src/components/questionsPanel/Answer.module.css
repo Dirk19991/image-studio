@@ -1,11 +1,11 @@
 .answer {
-  font-size: 1.5rem;
+  font-size: 3vh;
   display: flex;
   justify-content: flex-start;
   padding-left: 2.5rem;
   align-items: center;
   width: 45%;
-  height: 70px;
+  height: 7vh;
   background-color: black;
   margin-bottom: 1rem;
   border: 3px solid rgb(99, 208, 244);
