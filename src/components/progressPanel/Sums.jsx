@@ -1,8 +1,11 @@
 import data from '../../data/questions.json';
 import classes from './Sums.module.css';
 import classNames from 'classnames/bind';
+import { useSelector } from 'react-redux';
 
-export default function Sums({ progress, setProgress }) {
+export default function Sums() {
+  const reduxProgress = useSelector((state) => state.progress.progress);
+
   return (
     <div className={classes.sums}>
       <div className={classes.questionNumbers}>
@@ -10,10 +13,11 @@ export default function Sums({ progress, setProgress }) {
           .sort((a, b) => b.price - a.price)
           .map((elem) => {
             const white = elem.id % 5 === 0;
-            const highlighted = elem.id === progress;
-            const highlightedWhite = elem.id === progress && elem.id % 5 === 0;
+            const highlighted = elem.id === reduxProgress;
+            const highlightedWhite =
+              elem.id === reduxProgress && elem.id % 5 === 0;
             const highlightedIsOne =
-              elem.id === progress && (elem.id === 1 || elem.id === 11);
+              elem.id === reduxProgress && (elem.id === 1 || elem.id === 11);
             let cx = classNames.bind(classes);
             let className = cx({
               white: white,

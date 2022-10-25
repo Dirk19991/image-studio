@@ -1,12 +1,12 @@
-import classes from "./Answer.module.css";
-import classNames from "classnames/bind";
-import { useState, useEffect } from "react";
+import classes from './Answer.module.css';
+import classNames from 'classnames/bind';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProgress } from '../../features/progress/progressSlice';
 
 export default function Answer({
   answer,
   index,
-  progress,
-  setProgress,
   answered,
   setAnswered,
   correct,
@@ -16,7 +16,12 @@ export default function Answer({
   correctAnswer,
   incorrectAnswers,
 }) {
-  const answerLetters = ["A", "B", "C", "D"];
+  console.log(useSelector((state) => state));
+
+  const dispatch = useDispatch();
+  const reduxProgress = useSelector((state) => state.progress.progress);
+
+  const answerLetters = ['A', 'B', 'C', 'D'];
 
   const [clicked, setClicked] = useState(false);
 
@@ -26,7 +31,7 @@ export default function Answer({
     setFiftyFifty((prev) => {
       return { ...prev, active: false };
     });
-  }, [progress, setAnswered, setFiftyFifty]);
+  }, [reduxProgress, setAnswered, setFiftyFifty]);
 
   let cx = classNames.bind(classes);
 
@@ -49,7 +54,7 @@ export default function Answer({
               setClicked(true);
 
               setTimeout(() => {
-                if (answer === correctAnswer && progress === 15) {
+                if (answer === correctAnswer && reduxProgress === 15) {
                   setCorrect({
                     correctHighlighted: true,
                     lostGame: false,
@@ -63,7 +68,7 @@ export default function Answer({
                   });
 
                   setTimeout(() => {
-                    setProgress((prev) => prev + 1);
+                    dispatch(setProgress(reduxProgress + 1));
                     setAnswered(false);
                     setClicked(false);
                     setCorrect({
@@ -88,7 +93,7 @@ export default function Answer({
       }
       className={className}
     >
-      <span className={classes.letter}>{answerLetters[index]}: </span>{" "}
+      <span className={classes.letter}>{answerLetters[index]}: </span>{' '}
       <span>{answer}</span>
     </div>
   );

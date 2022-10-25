@@ -4,6 +4,7 @@ import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import classes from './Help.module.css';
 import HelpModal from '../helpModal/HelpModal';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function Help({
   fiftyFifty,
@@ -19,6 +20,7 @@ export default function Help({
   const [open, setOpen] = useState({ open: false, type: undefined });
   const handleOpen = (type) => setOpen({ open: true, type: type });
   const handleClose = (type) => setOpen({ open: false, type: type });
+  const reduxProgress = useSelector((state) => state.progress.progress);
 
   let helpMessage;
   if (open.type === 'friendCall') {
@@ -52,7 +54,7 @@ export default function Help({
 
         <div
           onClick={() => {
-            if (progress !== null && !friendCall.used) {
+            if (reduxProgress !== null && !friendCall.used) {
               handleOpen('friendCall');
               setFriendCall({ used: true });
             }
@@ -67,7 +69,7 @@ export default function Help({
         </div>
         <div
           onClick={() => {
-            if (progress !== null && !audienceHelp.used) {
+            if (reduxProgress !== null && !audienceHelp.used) {
               handleOpen('audienceHelp');
               setAudienceHelp({ used: true });
             }
