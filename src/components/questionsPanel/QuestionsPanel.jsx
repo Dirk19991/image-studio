@@ -2,69 +2,57 @@ import classes from './QuestionsPanel.module.css';
 import Question from './Question';
 import Answer from './Answer';
 import data from '../../data/questions.json';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProgress } from '../../features/progress/progressSlice';
-import calculatePrize from '../../utilities/calculatePrize';
-
-export default function QuestionsPanel({
-  fiftyFifty,
+import {
+  setProgress,
   setFiftyFifty,
   setFriendCall,
-  setAudience,
-  correctAnswer,
-  incorrectAnswers,
-}) {
-  const [answered, setAnswered] = useState(false);
-  const [correct, setCorrect] = useState({
-    correctHighlighted: false,
-    lostGame: false,
-    finishedGame: false,
-  });
+  setAudienceHelp,
+  setFinishedGame,
+  setLostGame,
+} from '../../features/progress/progressSlice';
+import { setHighlighted } from '../../features/answer/answerSlice';
+import calculatePrize from '../../utilities/calculatePrize';
+
+export default function QuestionsPanel({ correctAnswer, incorrectAnswers }) {
   const reduxProgress = useSelector((state) => state.progress.progress);
+  const reduxFinishedGame = useSelector((state) => state.progress.finishedGame);
+  const reduxLostGame = useSelector((state) => state.progress.lostGame);
   const dispatch = useDispatch();
 
   const answers = data.filter((elem) => elem.id === reduxProgress)[0].answers;
-  const prize = calculatePrize(reduxProgress, correct.lostGame);
+  const prize = calculatePrize(reduxProgress, reduxLostGame);
+
+  function startAgain() {
+    dispatch(setProgress(null));
+    dispatch(setHighlighted(false));
+    dispatch(setLostGame(false));
+    dispatch(setFinishedGame(false));
+    dispatch(setFiftyFifty({ used: false, active: false }));
+    dispatch(setFriendCall({ used: false }));
+    dispatch(setAudienceHelp({ used: false }));
+  }
+
+  function continueGame() {
+    dispatch(setProgress(reduxProgress + 1));
+    dispatch(setHighlighted(false));
+    dispatch(setLostGame(false));
+    dispatch(setFinishedGame(false));
+  }
 
   return (
     <div
-      className={
-        correct.finishedGame ? classes.questions : classes.questionsNoWin
-      }
+      className={reduxFinishedGame ? classes.questions : classes.questionsNoWin}
     >
-      {correct.finishedGame && (
+      {reduxFinishedGame && (
         <div className={classes.win}>
           <div>Выигрыш: {prize}</div>
           <div className={classes.buttonWrapper}>
-            <button
-              onClick={() => {
-                dispatch(setProgress(null));
-                setCorrect({
-                  correctHighlighted: false,
-                  lostGame: false,
-                  finishedGame: false,
-                });
-                setFiftyFifty({ used: false, active: false });
-                setFriendCall({ used: false });
-                setAudience({ used: false });
-              }}
-              className={classes.button}
-            >
+            <button onClick={startAgain} className={classes.button}>
               Сыграть снова
             </button>
             {reduxProgress !== 15 && (
-              <button
-                onClick={() => {
-                  dispatch(setProgress(reduxProgress + 1));
-                  setCorrect({
-                    correctHighlighted: false,
-                    lostGame: false,
-                    finishedGame: false,
-                  });
-                }}
-                className={classes.button}
-              >
+              <button onClick={continueGame} className={classes.button}>
                 Пропустить вопрос и продолжить игру
               </button>
             )}
@@ -77,12 +65,6 @@ export default function QuestionsPanel({
         <div className={classes.answers}>
           {answers.map((answer, index) => (
             <Answer
-              fiftyFifty={fiftyFifty}
-              setFiftyFifty={setFiftyFifty}
-              answered={answered}
-              setAnswered={setAnswered}
-              correct={correct}
-              setCorrect={setCorrect}
               key={index}
               answer={answer}
               index={index}

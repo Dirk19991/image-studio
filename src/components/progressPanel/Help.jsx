@@ -4,23 +4,26 @@ import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import classes from './Help.module.css';
 import HelpModal from '../helpModal/HelpModal';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-
-export default function Help({
-  fiftyFifty,
+import { useSelector, useDispatch } from 'react-redux';
+import {
   setFiftyFifty,
-  friendCall,
   setFriendCall,
-  audienceHelp,
   setAudienceHelp,
-  progress,
-  friendAnswer,
-  audiencePercentage,
-}) {
+} from '../../features/progress/progressSlice';
+
+export default function Help({ friendAnswer, audiencePercentage }) {
   const [open, setOpen] = useState({ open: false, type: undefined });
   const handleOpen = (type) => setOpen({ open: true, type: type });
   const handleClose = (type) => setOpen({ open: false, type: type });
+
+  const dispatch = useDispatch();
+
   const reduxProgress = useSelector((state) => state.progress.progress);
+  const reduxFiftyFifty = useSelector((state) => state.progress.fiftyFifty);
+  const reduxFriendCall = useSelector((state) => state.progress.friendCall);
+  const reduxAudienceHelp = useSelector((state) => state.progress.audienceHelp);
+
+  console.log(reduxAudienceHelp);
 
   let helpMessage;
   if (open.type === 'friendCall') {
@@ -41,10 +44,11 @@ export default function Help({
         )}
         <div
           onClick={() => {
-            !fiftyFifty.used && setFiftyFifty({ active: true, used: true });
+            !reduxFiftyFifty.used &&
+              dispatch(setFiftyFifty({ active: true, used: true }));
           }}
           className={
-            fiftyFifty.used
+            reduxFiftyFifty.used
               ? `${classes.help} ${classes.helpUsed}`
               : `${classes.help}`
           }
@@ -54,13 +58,13 @@ export default function Help({
 
         <div
           onClick={() => {
-            if (reduxProgress !== null && !friendCall.used) {
+            if (reduxProgress !== null && !reduxFriendCall.used) {
               handleOpen('friendCall');
-              setFriendCall({ used: true });
+              dispatch(setFriendCall({ used: true }));
             }
           }}
           className={
-            friendCall.used
+            reduxFriendCall.used
               ? `${classes.help} ${classes.helpUsed}`
               : `${classes.help}`
           }
@@ -69,13 +73,13 @@ export default function Help({
         </div>
         <div
           onClick={() => {
-            if (reduxProgress !== null && !audienceHelp.used) {
+            if (reduxProgress !== null && !reduxAudienceHelp.used) {
               handleOpen('audienceHelp');
-              setAudienceHelp({ used: true });
+              dispatch(setAudienceHelp({ used: true }));
             }
           }}
           className={
-            audienceHelp.used
+            reduxAudienceHelp.used
               ? `${classes.help} ${classes.helpUsed}`
               : `${classes.help}`
           }
