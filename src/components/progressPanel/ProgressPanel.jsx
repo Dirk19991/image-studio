@@ -5,14 +5,7 @@ import calculateFriendAnswer from '../../utilities/calculateFriendAnswer';
 import calculateAudiencePercentage from '../../utilities/calculateAudiencePercentage';
 import { useSelector } from 'react-redux';
 
-export default function ProgressPanel({
-  fiftyFifty,
-  setFiftyFifty,
-  friendCall,
-  setFriendCall,
-  audienceHelp,
-  setAudienceHelp,
-}) {
+export default function ProgressPanel() {
   const reduxProgress = useSelector((state) => state.progress.progress);
 
   const friendAnswer = calculateFriendAnswer(reduxProgress);
@@ -21,12 +14,6 @@ export default function ProgressPanel({
   return (
     <div className={styles.progress}>
       <Help
-        friendCall={friendCall}
-        setFriendCall={setFriendCall}
-        fiftyFifty={fiftyFifty}
-        setFiftyFifty={setFiftyFifty}
-        audienceHelp={audienceHelp}
-        setAudienceHelp={setAudienceHelp}
         friendAnswer={friendAnswer}
         audiencePercentage={audiencePercentage}
       />
