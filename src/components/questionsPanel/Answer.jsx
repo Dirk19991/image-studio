@@ -38,8 +38,6 @@ export default function Answer({
         dispatch(setLostGame(false));
         dispatch(setFinishedGame(true));
       } else if (answer === correctAnswer) {
-        dispatch(setLostGame(false));
-        dispatch(setFinishedGame(false));
         dispatch(setHighlighted(true));
 
         setTimeout(() => {
@@ -47,8 +45,6 @@ export default function Answer({
           dispatch(setAnswered(false));
           dispatch(setClicked({ clicked: false, index: index }));
           dispatch(setHighlighted(false));
-          dispatch(setLostGame(false));
-          dispatch(setFinishedGame(false));
 
           if (reduxFiftyFifty.active) {
             dispatch(setFiftyFifty({ active: false, used: true }));

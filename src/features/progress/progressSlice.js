@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const progressSlice = createSlice({
   name: 'progress',
   initialState: {
-    progress: null,
+    progress: 15,
     fiftyFifty: {
       active: false,
       used: false,
