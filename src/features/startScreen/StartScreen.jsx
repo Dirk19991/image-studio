@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import classes from './StartScreen.module.css';
-import { setProgress } from '../../features/progress/progressSlice';
+import { setProgress } from '../progressPanel/progressSlice';
 
 export default function StartScreen() {
   const [animation, setAnimation] = useState(false);

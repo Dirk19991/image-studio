@@ -3,13 +3,14 @@
   position: relative;
   min-height: 100vh;
   min-width: 100vw;
-  background: url("../public/images/494664\ \(1\).webp") no-repeat center center
+  background: url('../public/images/494664\ \(1\).webp') no-repeat center center
     fixed;
 
   filter: contrast(80%);
 }
 
-.wrapper {
+.wrapper,
+.questionsWrapper {
   width: 75%;
   height: 100%;
   display: flex;
@@ -18,4 +19,14 @@
   display: flex;
   bottom: 0;
   color: white;
+}
+
+@media (max-width: 820px) {
+  .wrapper {
+    justify-content: flex-start;
+    width: 50%;
+  }
+  .questionsWrapper {
+    width: 100%;
+  }
 }

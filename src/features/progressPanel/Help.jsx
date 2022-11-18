@@ -5,11 +5,7 @@ import classes from './Help.module.css';
 import HelpModal from '../helpModal/HelpModal';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  setFiftyFifty,
-  setFriendCall,
-  setAudienceHelp,
-} from '../../features/progress/progressSlice';
+import { setFiftyFifty, setFriendCall, setAudienceHelp } from './progressSlice';
 
 export default function Help({ friendAnswer, audiencePercentage }) {
   const [open, setOpen] = useState({ open: false, type: undefined });

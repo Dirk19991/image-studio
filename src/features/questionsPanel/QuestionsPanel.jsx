@@ -10,14 +10,16 @@ import {
   setAudienceHelp,
   setFinishedGame,
   setLostGame,
-} from '../../features/progress/progressSlice';
-import { setHighlighted } from '../../features/answer/answerSlice';
+} from '../progressPanel/progressSlice';
+import { setHighlighted } from './answerSlice';
 import calculatePrize from '../../utilities/calculatePrize';
+import { setAnswers } from './incorrectAnswersSlice';
 
-export default function QuestionsPanel({ correctAnswer, incorrectAnswers }) {
+export default function QuestionsPanel({ correctAnswer }) {
   const reduxProgress = useSelector((state) => state.progress.progress);
   const reduxFinishedGame = useSelector((state) => state.progress.finishedGame);
   const reduxLostGame = useSelector((state) => state.progress.lostGame);
+  const reduxFiftyFifty = useSelector((state) => state.progress.fiftyFifty);
   const dispatch = useDispatch();
 
   const answers = data.filter((elem) => elem.id === reduxProgress)[0].answers;
@@ -38,6 +40,7 @@ export default function QuestionsPanel({ correctAnswer, incorrectAnswers }) {
     dispatch(setHighlighted(false));
     dispatch(setLostGame(false));
     dispatch(setFinishedGame(false));
+    dispatch(setFiftyFifty({ used: reduxFiftyFifty.used, active: false }));
   }
 
   return (
@@ -69,7 +72,6 @@ export default function QuestionsPanel({ correctAnswer, incorrectAnswers }) {
               answer={answer}
               index={index}
               correctAnswer={correctAnswer}
-              incorrectAnswers={incorrectAnswers}
             />
           ))}
         </div>

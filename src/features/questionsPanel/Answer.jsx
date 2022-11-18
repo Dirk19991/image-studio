@@ -7,25 +7,19 @@ import {
   setFiftyFifty,
   setFinishedGame,
   setLostGame,
-} from '../../features/progress/progressSlice';
-import {
-  setClicked,
-  setHighlighted,
-  setAnswered,
-} from '../../features/answer/answerSlice';
+} from '../progressPanel/progressSlice';
+import { setClicked, setHighlighted, setAnswered } from './answerSlice';
 
-export default function Answer({
-  answer,
-  index,
-  correctAnswer,
-  incorrectAnswers,
-}) {
+export default function Answer({ answer, index, correctAnswer }) {
   const dispatch = useDispatch();
   const reduxProgress = useSelector((state) => state.progress.progress);
   const reduxFiftyFifty = useSelector((state) => state.progress.fiftyFifty);
   const reduxHighlighted = useSelector((state) => state.answer.highlighted);
   const reduxAnswered = useSelector((state) => state.answer.answered);
   const reduxClicked = useSelector((state) => state.answer.clicked[index]);
+  const incorrectAnswers = useSelector(
+    (state) => state.incorrectAnswers.answers
+  );
   const answerLetters = ['A', 'B', 'C', 'D'];
 
   function onClickAnswer() {
