@@ -46,7 +46,15 @@ export default function FriendCall({ open, handleClose, helpMessage }) {
       >
         <Fade in={open.open} exit={true}>
           <Box sx={boxStyle}>
-            <Typography id='modal-modal-title' variant='h6' component='h2'>
+            <Typography
+              id='modal-modal-title'
+              variant='h6'
+              component='h2'
+              sx={{
+                textAlign: 'center',
+                fontSize: isMobile ? '1.5rem' : '2rem',
+              }}
+            >
               {helpMessage}
             </Typography>
 

@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "question": "Какой символьный класс регулярных выражений испольуется для цифр?",
+    "question": "Какой символьный класс регулярных выражений используется для цифр?",
     "price": 2000,
     "answers": ["\\o", "\\s", "\\w", "\\d"],
     "incorrectAnswers": ["\\o", "\\s", "\\w"],
@@ -45,7 +45,7 @@
     "question": "Какого из этих терминов не существует?",
     "price": 5000,
     "answers": [
-      "DOM (Document Object Model",
+      "DOM (Document Object Model)",
       "CSSOM (CSS Object Model)",
       "NOM (Navigator Object Model)",
       "BOM (Browser Object Model)"
