@@ -18,6 +18,7 @@ export default function Help({ friendAnswer, audiencePercentage }) {
   const reduxFiftyFifty = useSelector((state) => state.progress.fiftyFifty);
   const reduxFriendCall = useSelector((state) => state.progress.friendCall);
   const reduxAudienceHelp = useSelector((state) => state.progress.audienceHelp);
+  const gameLost = useSelector((state) => state.progress.lostGame);
 
   let helpMessage;
   if (open.type === 'friendCall') {
@@ -39,6 +40,7 @@ export default function Help({ friendAnswer, audiencePercentage }) {
         <div
           onClick={() => {
             !reduxFiftyFifty.used &&
+              !gameLost &&
               dispatch(setFiftyFifty({ active: true, used: true }));
           }}
           className={
@@ -52,7 +54,7 @@ export default function Help({ friendAnswer, audiencePercentage }) {
 
         <div
           onClick={() => {
-            if (reduxProgress !== null && !reduxFriendCall.used) {
+            if (reduxProgress !== null && !reduxFriendCall.used && !gameLost) {
               handleOpen('friendCall');
               dispatch(setFriendCall({ used: true }));
             }
@@ -67,7 +69,11 @@ export default function Help({ friendAnswer, audiencePercentage }) {
         </div>
         <div
           onClick={() => {
-            if (reduxProgress !== null && !reduxAudienceHelp.used) {
+            if (
+              reduxProgress !== null &&
+              !reduxAudienceHelp.used &&
+              !gameLost
+            ) {
               handleOpen('audienceHelp');
               dispatch(setAudienceHelp({ used: true }));
             }

@@ -89,7 +89,12 @@ export default function QuestionsPanel({ correctAnswer }) {
         ) : (
           ''
         )}
-        <div className={classes.header}>Вопрос {reduxProgress}</div>
+        {isMobile ? (
+          <div className={classes.header}>Вопрос {reduxProgress} / 15</div>
+        ) : (
+          <div className={classes.header}>Вопрос {reduxProgress}</div>
+        )}
+
         <Question />
         <div className={classes.answers}>
           {answers.map((answer, index) => (
