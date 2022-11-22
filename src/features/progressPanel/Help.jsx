@@ -19,8 +19,6 @@ export default function Help({ friendAnswer, audiencePercentage }) {
   const reduxFriendCall = useSelector((state) => state.progress.friendCall);
   const reduxAudienceHelp = useSelector((state) => state.progress.audienceHelp);
 
-  console.log(reduxAudienceHelp);
-
   let helpMessage;
   if (open.type === 'friendCall') {
     helpMessage = `Ваш друг думает, что правильный ответ - ${friendAnswer}`;

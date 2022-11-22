@@ -1,6 +1,7 @@
 import classes from './QuestionsPanel.module.css';
 import Question from './Question';
 import Answer from './Answer';
+import Help from '../progressPanel/Help';
 import data from '../../data/questions.json';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -13,7 +14,9 @@ import {
 } from '../progressPanel/progressSlice';
 import { setHighlighted } from './answerSlice';
 import calculatePrize from '../../utilities/calculatePrize';
-import { setAnswers } from './incorrectAnswersSlice';
+import calculateFriendAnswer from '../../utilities/calculateFriendAnswer';
+import calculateAudiencePercentage from '../../utilities/calculateAudiencePercentage';
+import { useMediaQuery } from 'react-responsive';
 
 export default function QuestionsPanel({ correctAnswer }) {
   const reduxProgress = useSelector((state) => state.progress.progress);
@@ -22,8 +25,21 @@ export default function QuestionsPanel({ correctAnswer }) {
   const reduxFiftyFifty = useSelector((state) => state.progress.fiftyFifty);
   const dispatch = useDispatch();
 
+  const friendAnswer = calculateFriendAnswer(reduxProgress);
+  const audiencePercentage = calculateAudiencePercentage(reduxProgress);
+
   const answers = data.filter((elem) => elem.id === reduxProgress)[0].answers;
   const prize = calculatePrize(reduxProgress, reduxLostGame);
+
+  const isMobile = useMediaQuery({ query: '(max-width: 820px)' });
+
+  function calculateSum(progress) {
+    return new Intl.NumberFormat('en-US').format(
+      data.filter((elem) => elem.id === progress)[0].price
+    );
+  }
+
+  console.log(calculateSum(1));
 
   function startAgain() {
     dispatch(setProgress(null));
@@ -63,6 +79,18 @@ export default function QuestionsPanel({ correctAnswer }) {
         </div>
       )}
       <div>
+        {isMobile ? (
+          <>
+            <Help
+              friendAnswer={friendAnswer}
+              audiencePercentage={audiencePercentage}
+              className={classes.help}
+            />
+            <div className={classes.mobile}>{calculateSum(reduxProgress)}</div>
+          </>
+        ) : (
+          ''
+        )}
         <div className={classes.header}>Вопрос {reduxProgress}</div>
         <Question />
         <div className={classes.answers}>

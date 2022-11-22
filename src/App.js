@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import classes from './App.module.css';
 import ProgressPanel from './features/progressPanel/ProgressPanel';
 import QuestionsPanel from './features/questionsPanel/QuestionsPanel';
@@ -14,12 +13,15 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const shuffledIncorrectAnswers = shuffle(
-    data.filter((elem) => elem.id === reduxProgress || elem.id === 1)[0]
-      .incorrectAnswers
-  );
+  const shuffleData =
+    reduxProgress === null
+      ? data[0].incorrectAnswers
+      : data.filter((elem) => elem.id === reduxProgress)[0].incorrectAnswers;
+
+  const shuffledIncorrectAnswers = shuffle(shuffleData);
 
   useEffect(() => {
+    console.log(data.filter((elem) => elem.id === reduxProgress)[0]);
     dispatch(
       setAnswers({ number: reduxProgress, answers: shuffledIncorrectAnswers })
     );

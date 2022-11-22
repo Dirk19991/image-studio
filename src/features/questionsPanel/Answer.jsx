@@ -72,6 +72,8 @@ export default function Answer({ answer, index, correctAnswer }) {
       (answer === incorrectAnswers[0] || answer === incorrectAnswers[1]),
   });
 
+  console.log(reduxFiftyFifty.active, answer, incorrectAnswers);
+
   return (
     <div
       onClick={reduxAnswered ? () => {} : onClickAnswer}

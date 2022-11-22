@@ -32,18 +32,18 @@
   }
 
   .highlighted::before {
-    transform: translate(-250%, 120%) !important;
+    transform: translate(-250%, 160%) !important;
     height: 5px !important;
     width: 5px !important;
   }
 
   .highlightedWhite::before {
-    transform: translate(-250%, 190%) !important;
+    transform: translate(-250%, 160%) !important;
     height: 5px !important;
     width: 5px !important;
   }
   .highlightedIsOne::before {
-    transform: translate(-280%, 190%) !important;
+    transform: translate(-280%, 160%) !important;
     height: 5px !important;
     width: 5px !important;
   }

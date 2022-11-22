@@ -22,11 +22,10 @@
 }
 
 @media (max-width: 820px) {
-  .wrapper {
-    justify-content: flex-start;
-    width: 50%;
-  }
   .questionsWrapper {
+    width: 100%;
+  }
+  .wrapper {
     width: 100%;
   }
 }
