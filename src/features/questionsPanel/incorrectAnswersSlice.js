@@ -8,9 +8,6 @@ const incorrectAnswersSlice = createSlice({
   },
   reducers: {
     setAnswers(state, action) {
-      console.log(state.number);
-      console.log(action.payload.number);
-
       if (
         state.number === action.payload.number &&
         state.answers.length === 0

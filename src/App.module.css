@@ -1,7 +1,8 @@
 .background {
   display: flex;
   position: relative;
-  min-height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+
   min-width: 100vw;
   background: url('../public/images/494664\ \(1\).webp') no-repeat center center
     fixed;

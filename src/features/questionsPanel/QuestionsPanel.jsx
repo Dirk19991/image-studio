@@ -39,8 +39,6 @@ export default function QuestionsPanel({ correctAnswer }) {
     );
   }
 
-  console.log(calculateSum(1));
-
   function startAgain() {
     dispatch(setProgress(null));
     dispatch(setHighlighted(false));
