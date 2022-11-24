@@ -1,22 +1,40 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+interface Progress {
+  progress: number;
+  fiftyFifty: {
+    active: boolean;
+    used: boolean;
+  };
+  friendCall: {
+    used: boolean;
+  };
+  audienceHelp: {
+    used: boolean;
+  };
+  lostGame: boolean;
+  finishedGame: boolean;
+}
+
+const initialState: Progress = {
+  progress: 15,
+  fiftyFifty: {
+    active: false,
+    used: false,
+  },
+  friendCall: {
+    used: false,
+  },
+  audienceHelp: {
+    used: false,
+  },
+  lostGame: false,
+  finishedGame: false,
+};
+
 const progressSlice = createSlice({
   name: 'progress',
-  initialState: {
-    progress: 15,
-    fiftyFifty: {
-      active: false,
-      used: false,
-    },
-    friendCall: {
-      used: false,
-    },
-    audienceHelp: {
-      used: false,
-    },
-    lostGame: false,
-    finishedGame: false,
-  },
+  initialState,
   reducers: {
     setProgress(state, action) {
       state.progress = action.payload;

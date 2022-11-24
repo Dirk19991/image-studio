@@ -6,19 +6,32 @@ import HelpModal from '../helpModal/HelpModal';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFiftyFifty, setFriendCall, setAudienceHelp } from './progressSlice';
+import { RootState } from '../../store';
 
 export default function Help({ friendAnswer, audiencePercentage }) {
-  const [open, setOpen] = useState({ open: false, type: undefined });
-  const handleOpen = (type) => setOpen({ open: true, type: type });
-  const handleClose = (type) => setOpen({ open: false, type: type });
+  const [open, setOpen] = useState<{ open: boolean; type: undefined | string }>(
+    { open: false, type: undefined }
+  );
+  const handleOpen = (type: undefined | string) =>
+    setOpen({ open: true, type: type });
+  const handleClose = (type: undefined | string) =>
+    setOpen({ open: false, type: type });
 
   const dispatch = useDispatch();
 
-  const reduxProgress = useSelector((state) => state.progress.progress);
-  const reduxFiftyFifty = useSelector((state) => state.progress.fiftyFifty);
-  const reduxFriendCall = useSelector((state) => state.progress.friendCall);
-  const reduxAudienceHelp = useSelector((state) => state.progress.audienceHelp);
-  const gameLost = useSelector((state) => state.progress.lostGame);
+  const reduxProgress = useSelector(
+    (state: RootState) => state.progress.progress
+  );
+  const reduxFiftyFifty = useSelector(
+    (state: RootState) => state.progress.fiftyFifty
+  );
+  const reduxFriendCall = useSelector(
+    (state: RootState) => state.progress.friendCall
+  );
+  const reduxAudienceHelp = useSelector(
+    (state: RootState) => state.progress.audienceHelp
+  );
+  const gameLost = useSelector((state: RootState) => state.progress.lostGame);
 
   let helpMessage;
   if (open.type === 'friendCall') {

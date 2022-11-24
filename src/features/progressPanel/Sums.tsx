@@ -2,11 +2,23 @@ import data from '../../data/questions.json';
 import classes from './Sums.module.css';
 import classNames from 'classnames/bind';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 export default function Sums() {
-  const reduxProgress = useSelector((state) => state.progress.progress);
+  const reduxProgress = useSelector(
+    (state: RootState) => state.progress.progress
+  );
 
-  function mapQuestionNumbers(elem) {
+  interface Question {
+    id: number;
+    question: string;
+    price: number;
+    answers: string[];
+    incorrectAnswers: string[];
+    correctAnswer: string;
+  }
+
+  function mapQuestionNumbers(elem: Question) {
     const white = elem.id % 5 === 0;
     const highlighted = elem.id === reduxProgress;
     const highlightedWhite = elem.id === reduxProgress && elem.id % 5 === 0;
@@ -26,7 +38,7 @@ export default function Sums() {
     );
   }
 
-  function mapQuestionSums(elem) {
+  function mapQuestionSums(elem: Question) {
     return elem.id % 5 === 0 ? (
       <div key={elem.id} className={classes.white}>
         {new Intl.NumberFormat('en-US').format(elem.price)}

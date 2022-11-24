@@ -11,8 +11,11 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+// @ts-ignore
 import progressReducer from '../features/progressPanel/progressSlice';
+// @ts-ignore
 import answerReducer from '../features/questionsPanel/answerSlice';
+// @ts-ignore
 import incorrectAnswersSlice from '../features/questionsPanel/incorrectAnswersSlice';
 
 const rootReducer = combineReducers({
@@ -26,6 +29,8 @@ const persistConfig = {
   version: 1,
   storage,
 };
+
+export type RootReducer = ReturnType<typeof rootReducer>;
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -42,3 +47,5 @@ const store = configureStore({
 export const persistor = persistStore(store);
 
 export default store;
+
+export type RootState = ReturnType<typeof rootReducer>;
