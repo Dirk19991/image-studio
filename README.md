@@ -1,4 +1,7 @@
 
+
+
+
 ## Кто хочет стать миллионером?
 
 Игра "Кто хочет стать миллионером?" с вопросами на frontend-тематику.
@@ -17,7 +20,7 @@
 1. Реализованы десктопная и мобильная версии игры:
 <img src="https://user-images.githubusercontent.com/104031523/203271414-2b4a7416-6da1-4f4b-87c7-f9cb3cbd2aaf.png" alt="Alt text" title="Optional title" width=70% height=70%>
 
-<img src="https://sun9-20.userapi.com/impg/MzPvX4a8XIVkafypL3uhvznwM3PqOMm_aB5SYw/dugY3hh0UkQ.jpg?size=738x1600&quality=95&sign=d6f3bc651b14015ea1e06eb8056765ef&type=album" alt="Alt text" title="Optional title" width=30% height=30%>
+<img src="https://sun9-50.userapi.com/impg/DU9-brw1KTSI7mmJjLJa9T6yYIYOTIdzyllcXA/BTtvTl-IXew.jpg?size=738x1600&quality=95&sign=94cbbe1317227a56bddb7efc3cab5633&type=album" alt="Alt text" title="Optional title" width=30% height=30%>
 
 2. Логика подсказок реализована следующим образом: в зависимости от прогресса в игре функция высчитывает вероятность, с которой будет подсказан верный ответ - для вопросов 1-5 - 100%, 6-10 - 70%, 11-15 - 40%. При этом для помощи зала дополнительно подсчитывается процент аудитории, которая дала верный ответ - чем вопрос дороже, тем процент в среднем меньше. Сами подсказки реализованы с помощью модального окна Material UI:
 
