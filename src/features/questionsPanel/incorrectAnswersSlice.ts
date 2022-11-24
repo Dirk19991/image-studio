@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+interface IncorrectAnswers {
+  number: number;
+  answers: string[];
+}
+
+const initialState: IncorrectAnswers = {
+  number: 1,
+  answers: [],
+};
+
 const incorrectAnswersSlice = createSlice({
   name: 'incorrectAnswers',
-  initialState: {
-    number: 1,
-    answers: [],
-  },
+  initialState,
   reducers: {
     setAnswers(state, action) {
       if (

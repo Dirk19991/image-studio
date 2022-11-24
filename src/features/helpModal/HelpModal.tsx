@@ -1,14 +1,24 @@
-import React from 'react';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-// @ts-ignore
-import App from '../../App';
 import Fade from '@mui/material/Fade';
 import { useMediaQuery } from 'react-responsive';
 
-export default function FriendCall({ open, handleClose, helpMessage }) {
+interface ModalProps {
+  open: {
+    open: boolean;
+    type: undefined | string;
+  };
+  handleClose: (type: undefined | string) => void;
+  helpMessage: string;
+}
+
+export default function FriendCall({
+  open,
+  handleClose,
+  helpMessage,
+}: ModalProps) {
   const isMobile = useMediaQuery({ query: '(max-width: 820px)' });
 
   const boxStyle = {
@@ -36,7 +46,6 @@ export default function FriendCall({ open, handleClose, helpMessage }) {
   return (
     <div>
       <Modal
-        component={App.js}
         open={open.open}
         onClose={() => handleClose(open.type)}
         aria-labelledby='modal-modal-title'
@@ -58,9 +67,8 @@ export default function FriendCall({ open, handleClose, helpMessage }) {
             >
               {helpMessage}
             </Typography>
-            {/* 
-// @ts-ignore */}
-            <Button sx={buttonStyle} onClick={handleClose}>
+
+            <Button sx={buttonStyle} onClick={() => handleClose(open.type)}>
               OK
             </Button>
           </Box>

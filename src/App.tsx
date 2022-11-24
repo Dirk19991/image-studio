@@ -7,6 +7,7 @@ import data from './data/questions.json';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAnswers } from './features/questionsPanel/incorrectAnswersSlice';
 import { useEffect } from 'react';
+import { RootState } from './store';
 
 function App() {
   // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -21,7 +22,9 @@ function App() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
 
-  const reduxProgress = useSelector((state) => state.progress.progress);
+  const reduxProgress = useSelector(
+    (state: RootState) => state.progress.progress
+  );
 
   const dispatch = useDispatch();
 

@@ -1,17 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+interface Answer {
+  answered: boolean;
+  highlighted: boolean;
+  clicked: {
+    0: boolean;
+    1: boolean;
+    2: boolean;
+    3: boolean;
+  };
+}
+
+const initialState: Answer = {
+  answered: false,
+  highlighted: false,
+  clicked: {
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+  },
+};
+
 const answerSlice = createSlice({
   name: 'answer',
-  initialState: {
-    answered: false,
-    highlighted: false,
-    clicked: {
-      0: false,
-      1: false,
-      2: false,
-      3: false,
-    },
-  },
+  initialState,
   reducers: {
     setAnswered(state, action) {
       state.answered = action.payload;

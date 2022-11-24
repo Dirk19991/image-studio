@@ -1,5 +1,5 @@
-export default function shuffle(arr) {
-  var j, x, index;
+export default function shuffle(arr: string[]): string[] {
+  let j: number, x: string, index: number;
   for (index = arr.length - 1; index > 0; index--) {
     j = Math.floor(Math.random() * (index + 1));
     x = arr[index];

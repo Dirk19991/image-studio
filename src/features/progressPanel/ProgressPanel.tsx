@@ -5,9 +5,12 @@ import calculateFriendAnswer from '../../utilities/calculateFriendAnswer';
 import calculateAudiencePercentage from '../../utilities/calculateAudiencePercentage';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
+import { RootState } from '../../store';
 
 export default function ProgressPanel() {
-  const reduxProgress = useSelector((state) => state.progress.progress);
+  const reduxProgress = useSelector(
+    (state: RootState) => state.progress.progress
+  );
 
   const friendAnswer = calculateFriendAnswer(reduxProgress);
   const audiencePercentage = calculateAudiencePercentage(reduxProgress);

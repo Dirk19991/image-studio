@@ -17,12 +17,21 @@ import calculatePrize from '../../utilities/calculatePrize';
 import calculateFriendAnswer from '../../utilities/calculateFriendAnswer';
 import calculateAudiencePercentage from '../../utilities/calculateAudiencePercentage';
 import { useMediaQuery } from 'react-responsive';
+import { RootState } from '../../store';
 
-export default function QuestionsPanel({ correctAnswer }) {
-  const reduxProgress = useSelector((state) => state.progress.progress);
-  const reduxFinishedGame = useSelector((state) => state.progress.finishedGame);
-  const reduxLostGame = useSelector((state) => state.progress.lostGame);
-  const reduxFiftyFifty = useSelector((state) => state.progress.fiftyFifty);
+export default function QuestionsPanel({ correctAnswer, className }) {
+  const reduxProgress = useSelector(
+    (state: RootState) => state.progress.progress
+  );
+  const reduxFinishedGame = useSelector(
+    (state: RootState) => state.progress.finishedGame
+  );
+  const reduxLostGame = useSelector(
+    (state: RootState) => state.progress.lostGame
+  );
+  const reduxFiftyFifty = useSelector(
+    (state: RootState) => state.progress.fiftyFifty
+  );
   const dispatch = useDispatch();
 
   const friendAnswer = calculateFriendAnswer(reduxProgress);

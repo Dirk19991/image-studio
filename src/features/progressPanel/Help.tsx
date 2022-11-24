@@ -8,14 +8,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setFiftyFifty, setFriendCall, setAudienceHelp } from './progressSlice';
 import { RootState } from '../../store';
 
-export default function Help({ friendAnswer, audiencePercentage }) {
+interface HelpProps {
+  friendAnswer: string;
+  audiencePercentage: number;
+  className?: string;
+}
+
+export default function Help({ friendAnswer, audiencePercentage }: HelpProps) {
   const [open, setOpen] = useState<{ open: boolean; type: undefined | string }>(
     { open: false, type: undefined }
   );
   const handleOpen = (type: undefined | string) =>
     setOpen({ open: true, type: type });
-  const handleClose = (type: undefined | string) =>
-    setOpen({ open: false, type: type });
+  const handleClose = () => setOpen({ open: false, type: undefined });
 
   const dispatch = useDispatch();
 
@@ -33,7 +38,7 @@ export default function Help({ friendAnswer, audiencePercentage }) {
   );
   const gameLost = useSelector((state: RootState) => state.progress.lostGame);
 
-  let helpMessage;
+  let helpMessage: string = '';
   if (open.type === 'friendCall') {
     helpMessage = `Ваш друг думает, что правильный ответ - ${friendAnswer}`;
   } else if (open.type === 'audienceHelp') {

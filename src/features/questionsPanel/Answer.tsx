@@ -9,16 +9,27 @@ import {
   setLostGame,
 } from '../progressPanel/progressSlice';
 import { setClicked, setHighlighted, setAnswered } from './answerSlice';
+import { RootState } from '../../store';
 
 export default function Answer({ answer, index, correctAnswer }) {
   const dispatch = useDispatch();
-  const reduxProgress = useSelector((state) => state.progress.progress);
-  const reduxFiftyFifty = useSelector((state) => state.progress.fiftyFifty);
-  const reduxHighlighted = useSelector((state) => state.answer.highlighted);
-  const reduxAnswered = useSelector((state) => state.answer.answered);
-  const reduxClicked = useSelector((state) => state.answer.clicked[index]);
+  const reduxProgress = useSelector(
+    (state: RootState) => state.progress.progress
+  );
+  const reduxFiftyFifty = useSelector(
+    (state: RootState) => state.progress.fiftyFifty
+  );
+  const reduxHighlighted = useSelector(
+    (state: RootState) => state.answer.highlighted
+  );
+  const reduxAnswered = useSelector(
+    (state: RootState) => state.answer.answered
+  );
+  const reduxClicked = useSelector(
+    (state: RootState) => state.answer.clicked[index]
+  );
   const incorrectAnswers = useSelector(
-    (state) => state.incorrectAnswers.answers
+    (state: RootState) => state.incorrectAnswers.answers
   );
   const answerLetters = ['A', 'B', 'C', 'D'];
 
