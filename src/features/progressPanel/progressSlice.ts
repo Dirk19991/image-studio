@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface Progress {
-  progress: number;
+  progress: number | null;
   fiftyFifty: {
     active: boolean;
     used: boolean;
@@ -17,7 +17,7 @@ interface Progress {
 }
 
 const initialState: Progress = {
-  progress: 15,
+  progress: null,
   fiftyFifty: {
     active: false,
     used: false,

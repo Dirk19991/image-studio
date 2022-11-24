@@ -19,7 +19,12 @@ import calculateAudiencePercentage from '../../utilities/calculateAudiencePercen
 import { useMediaQuery } from 'react-responsive';
 import { RootState } from '../../store';
 
-export default function QuestionsPanel({ correctAnswer, className }) {
+interface QuestionsPanelProps {
+  className?: string;
+  correctAnswer: string;
+}
+
+export default function QuestionsPanel({ correctAnswer }: QuestionsPanelProps) {
   const reduxProgress = useSelector(
     (state: RootState) => state.progress.progress
   );
@@ -42,7 +47,7 @@ export default function QuestionsPanel({ correctAnswer, className }) {
 
   const isMobile = useMediaQuery({ query: '(max-width: 820px)' });
 
-  function calculateSum(progress) {
+  function calculateSum(progress: number) {
     return new Intl.NumberFormat('en-US').format(
       data.filter((elem) => elem.id === progress)[0].price
     );
@@ -59,7 +64,7 @@ export default function QuestionsPanel({ correctAnswer, className }) {
   }
 
   function continueGame() {
-    dispatch(setProgress(reduxProgress + 1));
+    dispatch(setProgress(reduxProgress === null ? 1 : reduxProgress + 1));
     dispatch(setHighlighted(false));
     dispatch(setLostGame(false));
     dispatch(setFinishedGame(false));
@@ -93,7 +98,9 @@ export default function QuestionsPanel({ correctAnswer, className }) {
               audiencePercentage={audiencePercentage}
               className={classes.help}
             />
-            <div className={classes.mobile}>{calculateSum(reduxProgress)}</div>
+            <div className={classes.mobile}>
+              {calculateSum(reduxProgress === null ? 1 : reduxProgress)}
+            </div>
           </>
         ) : (
           ''

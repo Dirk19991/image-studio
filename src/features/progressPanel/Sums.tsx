@@ -4,19 +4,19 @@ import classNames from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
+export interface Question {
+  id: number;
+  question: string;
+  price: number;
+  answers: string[];
+  incorrectAnswers: string[];
+  correctAnswer: string;
+}
+
 export default function Sums() {
   const reduxProgress = useSelector(
     (state: RootState) => state.progress.progress
   );
-
-  interface Question {
-    id: number;
-    question: string;
-    price: number;
-    answers: string[];
-    incorrectAnswers: string[];
-    correctAnswer: string;
-  }
 
   function mapQuestionNumbers(elem: Question) {
     const white = elem.id % 5 === 0;

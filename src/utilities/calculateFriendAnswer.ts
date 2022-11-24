@@ -1,14 +1,16 @@
-import data from "../data/questions.json";
-import shuffle from "./shuffle";
+import data from '../data/questions.json';
+import shuffle from './shuffle';
+import { Question } from '../features/progressPanel/Sums';
 
-export default function calculateFriendAnswer(progress) {
+export default function calculateFriendAnswer(progress: number | null): string {
   if (progress === null) {
-    return;
+    return '';
   }
-  const correctAnswer = data.filter((elem) => elem.id === progress)[0]
+  const correctAnswer = data.filter((elem: Question) => elem.id === progress)[0]
     .correctAnswer;
-  const incorrectAnswers = data.filter((elem) => elem.id === progress)[0]
-    .incorrectAnswers;
+  const incorrectAnswers = data.filter(
+    (elem: Question) => elem.id === progress
+  )[0].incorrectAnswers;
 
   if (progress >= 1 && progress <= 5) {
     return correctAnswer;
@@ -29,4 +31,5 @@ export default function calculateFriendAnswer(progress) {
       return shuffle(incorrectAnswers)[0];
     }
   }
+  return '';
 }

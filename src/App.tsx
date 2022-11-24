@@ -42,8 +42,9 @@ function App() {
   }, [reduxProgress, shuffledIncorrectAnswers, dispatch]);
 
   const correctAnswer =
-    reduxProgress !== null &&
-    data.filter((elem) => elem.id === reduxProgress)[0].correctAnswer;
+    reduxProgress === null
+      ? ''
+      : data.filter((elem) => elem.id === reduxProgress)[0].correctAnswer;
 
   return (
     <div className={classes.background}>

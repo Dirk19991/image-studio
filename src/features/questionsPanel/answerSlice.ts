@@ -4,6 +4,7 @@ interface Answer {
   answered: boolean;
   highlighted: boolean;
   clicked: {
+    [key: number]: boolean;
     0: boolean;
     1: boolean;
     2: boolean;
@@ -33,7 +34,7 @@ const answerSlice = createSlice({
       state.highlighted = action.payload;
     },
     setClicked(state, action) {
-      const index = action.payload.index;
+      const index: 0 | 1 | 2 | 3 = action.payload.index;
       state.clicked[index] = action.payload.clicked;
     },
   },

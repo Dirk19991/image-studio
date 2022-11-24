@@ -1,4 +1,10 @@
-export default function calculateAudiencePercentage(progress: number): number {
+export default function calculateAudiencePercentage(
+  progress: number | null
+): number {
+  console.log(progress);
+  if (progress === null) {
+    return 0;
+  }
   if (progress >= 1 && progress <= 5) {
     return Math.floor(Math.random() * 40) + 60;
   }

@@ -11,7 +11,13 @@ import {
 import { setClicked, setHighlighted, setAnswered } from './answerSlice';
 import { RootState } from '../../store';
 
-export default function Answer({ answer, index, correctAnswer }) {
+interface AnswerProps {
+  answer: string;
+  index: number;
+  correctAnswer: string;
+}
+
+export default function Answer({ answer, index, correctAnswer }: AnswerProps) {
   const dispatch = useDispatch();
   const reduxProgress = useSelector(
     (state: RootState) => state.progress.progress
@@ -48,7 +54,7 @@ export default function Answer({ answer, index, correctAnswer }) {
         dispatch(setHighlighted(true));
 
         setTimeout(() => {
-          dispatch(setProgress(reduxProgress + 1));
+          dispatch(setProgress(reduxProgress === null ? 1 : reduxProgress + 1));
           dispatch(setAnswered(false));
           dispatch(setClicked({ clicked: false, index: index }));
           dispatch(setHighlighted(false));
