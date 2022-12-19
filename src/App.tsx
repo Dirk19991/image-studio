@@ -4,10 +4,9 @@ import QuestionsPanel from './features/questionsPanel/QuestionsPanel';
 import StartScreen from './features/startScreen/StartScreen';
 import shuffle from './utilities/shuffle';
 import data from './data/questions.json';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from './store/index';
 import { setAnswers } from './features/questionsPanel/incorrectAnswersSlice';
 import { useEffect } from 'react';
-import { RootState } from './store';
 
 function App() {
   // для нормального отображения на мобильных устройствах
@@ -18,9 +17,9 @@ function App() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
 
-  const progress = useSelector((state: RootState) => state.progress.progress);
+  const progress = useAppSelector((state) => state.progress.progress);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const shuffleData =
     progress === null

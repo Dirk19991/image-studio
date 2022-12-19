@@ -1,7 +1,5 @@
 import classes from './Answer.module.css';
 import classNames from 'classnames/bind';
-
-import { useDispatch, useSelector } from 'react-redux';
 import {
   winGame,
   nextQuestion,
@@ -9,6 +7,7 @@ import {
 } from '../progressPanel/progressSlice';
 import { setClicked, setHighlighted, setAnswered } from './answerSlice';
 import { RootState } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store/index';
 
 interface AnswerProps {
   answer: string;
@@ -17,21 +16,17 @@ interface AnswerProps {
 }
 
 export default function Answer({ answer, index, correctAnswer }: AnswerProps) {
-  const dispatch = useDispatch();
-  const progress = useSelector((state: RootState) => state.progress.progress);
-  const fiftyfifty = useSelector(
-    (state: RootState) => state.progress.fiftyFifty
+  const dispatch = useAppDispatch();
+
+  const progress = useAppSelector((state) => state.progress.progress);
+  const fiftyfifty = useAppSelector((state) => state.progress.fiftyFifty);
+  const highlighted = useAppSelector((state) => state.answer.highlighted);
+  const answered = useAppSelector((state: RootState) => state.answer.answered);
+  const clicked = useAppSelector((state) => state.answer.clicked[index]);
+  const incorrectAnswers = useAppSelector(
+    (state) => state.incorrectAnswers.answers
   );
-  const highlighted = useSelector(
-    (state: RootState) => state.answer.highlighted
-  );
-  const answered = useSelector((state: RootState) => state.answer.answered);
-  const clicked = useSelector(
-    (state: RootState) => state.answer.clicked[index]
-  );
-  const incorrectAnswers = useSelector(
-    (state: RootState) => state.incorrectAnswers.answers
-  );
+
   const answerLetters = ['A', 'B', 'C', 'D'];
 
   const onClickAnswer = () => {
@@ -54,7 +49,7 @@ export default function Answer({ answer, index, correctAnswer }: AnswerProps) {
 
   let cx = classNames.bind(classes);
 
-  let className = cx({
+  let answerStyles = cx({
     answer: true,
     clicked: clicked === true,
     correct: highlighted === true && answer === correctAnswer,
@@ -64,7 +59,7 @@ export default function Answer({ answer, index, correctAnswer }: AnswerProps) {
   });
 
   return (
-    <div onClick={answered ? () => {} : onClickAnswer} className={className}>
+    <div onClick={answered ? () => {} : onClickAnswer} className={answerStyles}>
       <span className={classes.letter}>{answerLetters[index]}: </span>{' '}
       <span>{answer}</span>
     </div>

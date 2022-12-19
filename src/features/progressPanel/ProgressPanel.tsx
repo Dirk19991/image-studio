@@ -3,20 +3,17 @@ import Help from './Help';
 import Sums from './Sums';
 import calculateFriendAnswer from '../../utilities/calculateFriendAnswer';
 import calculateAudiencePercentage from '../../utilities/calculateAudiencePercentage';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store';
 import { useMediaQuery } from 'react-responsive';
-import { RootState } from '../../store';
 import { memo } from 'react';
 
 export default memo(function ProgressPanel() {
-  const progress = useSelector((state: RootState) => state.progress.progress);
+  const progress = useAppSelector((state) => state.progress.progress);
 
   const friendAnswer = calculateFriendAnswer(progress);
   const audiencePercentage = calculateAudiencePercentage(progress);
 
   const isMobile = useMediaQuery({ query: '(max-width: 820px)' });
-
-  console.log('render');
 
   return (
     <>

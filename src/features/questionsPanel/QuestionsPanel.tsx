@@ -4,13 +4,12 @@ import Answer from './Answer';
 import Help from '../progressPanel/Help';
 import data from '../../data/questions.json';
 import { calculateSum } from '../../utilities/calculateSum';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { startGame, continueGame } from '../progressPanel/progressSlice';
 import calculatePrize from '../../utilities/calculatePrize';
 import calculateFriendAnswer from '../../utilities/calculateFriendAnswer';
 import calculateAudiencePercentage from '../../utilities/calculateAudiencePercentage';
 import { useMediaQuery } from 'react-responsive';
-import { RootState } from '../../store';
 
 interface QuestionsPanelProps {
   className?: string;
@@ -18,12 +17,10 @@ interface QuestionsPanelProps {
 }
 
 export default function QuestionsPanel({ correctAnswer }: QuestionsPanelProps) {
-  const progress = useSelector((state: RootState) => state.progress.progress);
-  const finishedGame = useSelector(
-    (state: RootState) => state.progress.finishedGame
-  );
-  const lostGame = useSelector((state: RootState) => state.progress.lostGame);
-  const dispatch = useDispatch();
+  const progress = useAppSelector((state) => state.progress.progress);
+  const finishedGame = useAppSelector((state) => state.progress.finishedGame);
+  const lostGame = useAppSelector((state) => state.progress.lostGame);
+  const dispatch = useAppDispatch();
 
   const friendAnswer = calculateFriendAnswer(progress);
   const audiencePercentage = calculateAudiencePercentage(progress);

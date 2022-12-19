@@ -1,11 +1,10 @@
 import React from 'react';
 import classes from './Question.module.css';
 import data from '../../data/questions.json';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { useAppSelector } from '../../store';
 
 export default function Question() {
-  const progress = useSelector((state: RootState) => state.progress.progress);
+  const progress = useAppSelector((state) => state.progress.progress);
 
   const question = data.filter((elem) => elem.id === progress)[0].question;
 

@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import classes from './StartScreen.module.css';
 import { setProgress } from '../progressPanel/progressSlice';
+import { useAppDispatch } from '../../store';
 
 export default function StartScreen() {
   const [animation, setAnimation] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleStartGame = () => {
     setAnimation(true);
@@ -15,12 +15,12 @@ export default function StartScreen() {
     }, 600);
   };
 
+  const animationStyles = animation
+    ? `${classes.wrapper} ${classes.animation}`
+    : classes.wrapper;
+
   return (
-    <div
-      className={
-        animation ? `${classes.wrapper} ${classes.animation}` : classes.wrapper
-      }
-    >
+    <div className={animationStyles}>
       <div className={classes.title}>
         Кто хочет стать миллионером? (Frontend edition)
       </div>

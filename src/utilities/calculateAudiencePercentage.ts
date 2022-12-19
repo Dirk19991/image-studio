@@ -1,7 +1,6 @@
 export default function calculateAudiencePercentage(
   progress: number | null
 ): number {
-  console.log(progress);
   if (progress === null) {
     return 0;
   }
