@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from './../../store/index';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 interface Progress {
   progress: number | null;
@@ -56,6 +57,44 @@ const progressSlice = createSlice({
     setFinishedGame(state, action) {
       state.finishedGame = action.payload;
     },
+    startGame(state) {
+      state.progress = null;
+      state.lostGame = false;
+      state.finishedGame = false;
+      state.fiftyFifty.used = false;
+      state.fiftyFifty.active = false;
+      state.friendCall.used = false;
+      state.audienceHelp.used = false;
+    },
+    continueGame(state) {
+      if (state.progress === null) {
+        state.progress = 1;
+      } else {
+        state.progress += 1;
+      }
+      state.lostGame = false;
+      state.finishedGame = false;
+      state.fiftyFifty.active = false;
+    },
+    winGame(state) {
+      state.finishedGame = true;
+    },
+    loseGame(state) {
+      state.lostGame = true;
+      state.finishedGame = true;
+    },
+    nextQuestion(state) {
+      if (state.progress === null) {
+        state.progress = 1;
+      } else {
+        state.progress += 1;
+      }
+
+      if (state.fiftyFifty.active === true) {
+        state.fiftyFifty.active = false;
+        state.fiftyFifty.used = true;
+      }
+    },
   },
 });
 
@@ -66,6 +105,11 @@ export const {
   setAudienceHelp,
   setLostGame,
   setFinishedGame,
+  startGame,
+  continueGame,
+  winGame,
+  nextQuestion,
+  loseGame,
 } = progressSlice.actions;
 
 export default progressSlice.reducer;

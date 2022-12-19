@@ -6,16 +6,17 @@ import calculateAudiencePercentage from '../../utilities/calculateAudiencePercen
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { RootState } from '../../store';
+import { memo } from 'react';
 
-export default function ProgressPanel() {
-  const reduxProgress = useSelector(
-    (state: RootState) => state.progress.progress
-  );
+export default memo(function ProgressPanel() {
+  const progress = useSelector((state: RootState) => state.progress.progress);
 
-  const friendAnswer = calculateFriendAnswer(reduxProgress);
-  const audiencePercentage = calculateAudiencePercentage(reduxProgress);
+  const friendAnswer = calculateFriendAnswer(progress);
+  const audiencePercentage = calculateAudiencePercentage(progress);
 
   const isMobile = useMediaQuery({ query: '(max-width: 820px)' });
+
+  console.log('render');
 
   return (
     <>
@@ -32,4 +33,4 @@ export default function ProgressPanel() {
       )}
     </>
   );
-}
+});

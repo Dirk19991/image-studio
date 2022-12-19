@@ -8,6 +8,13 @@ export default function StartScreen() {
 
   const dispatch = useDispatch();
 
+  const handleStartGame = () => {
+    setAnimation(true);
+    setTimeout(() => {
+      dispatch(setProgress(1));
+    }, 600);
+  };
+
   return (
     <div
       className={
@@ -17,15 +24,7 @@ export default function StartScreen() {
       <div className={classes.title}>
         Кто хочет стать миллионером? (Frontend edition)
       </div>
-      <div
-        onClick={() => {
-          setAnimation(true);
-          setTimeout(() => {
-            dispatch(setProgress(1));
-          }, 600);
-        }}
-        className={classes.start}
-      >
+      <div onClick={handleStartGame} className={classes.start}>
         Начать игру
       </div>
     </div>

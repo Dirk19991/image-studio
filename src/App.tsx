@@ -10,50 +10,44 @@ import { useEffect } from 'react';
 import { RootState } from './store';
 
 function App() {
-  // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+  // для нормального отображения на мобильных устройствах
   let vh = window.innerHeight * 0.01;
-  // Then we set the value in the --vh custom property to the root of the document
   document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-  // We listen to the resize event
   window.addEventListener('resize', () => {
-    // We execute the same script as before
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
 
-  const reduxProgress = useSelector(
-    (state: RootState) => state.progress.progress
-  );
+  const progress = useSelector((state: RootState) => state.progress.progress);
 
   const dispatch = useDispatch();
 
   const shuffleData =
-    reduxProgress === null
+    progress === null
       ? data[0].incorrectAnswers
-      : data.filter((elem) => elem.id === reduxProgress)[0].incorrectAnswers;
+      : data.filter((elem) => elem.id === progress)[0].incorrectAnswers;
 
   const shuffledIncorrectAnswers = shuffle(shuffleData);
 
   useEffect(() => {
     dispatch(
-      setAnswers({ number: reduxProgress, answers: shuffledIncorrectAnswers })
+      setAnswers({ number: progress, answers: shuffledIncorrectAnswers })
     );
-  }, [reduxProgress, shuffledIncorrectAnswers, dispatch]);
+  }, [progress, shuffledIncorrectAnswers, dispatch]);
 
   const correctAnswer =
-    reduxProgress === null
+    progress === null
       ? ''
-      : data.filter((elem) => elem.id === reduxProgress)[0].correctAnswer;
+      : data.filter((elem) => elem.id === progress)[0].correctAnswer;
 
   return (
     <div className={classes.background}>
       <div
         className={
-          reduxProgress === null ? classes.wrapper : classes.questionsWrapper
+          progress === null ? classes.wrapper : classes.questionsWrapper
         }
       >
-        {reduxProgress === null ? (
+        {progress === null ? (
           <StartScreen />
         ) : (
           <QuestionsPanel

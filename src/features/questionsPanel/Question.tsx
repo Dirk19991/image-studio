@@ -5,11 +5,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
 export default function Question() {
-  const reduxProgress = useSelector(
-    (state: RootState) => state.progress.progress
-  );
+  const progress = useSelector((state: RootState) => state.progress.progress);
 
-  const question = data.filter((elem) => elem.id === reduxProgress)[0].question;
+  const question = data.filter((elem) => elem.id === progress)[0].question;
 
   return <div className={classes.question}>{question}</div>;
 }

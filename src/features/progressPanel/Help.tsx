@@ -24,16 +24,14 @@ export default function Help({ friendAnswer, audiencePercentage }: HelpProps) {
 
   const dispatch = useDispatch();
 
-  const reduxProgress = useSelector(
-    (state: RootState) => state.progress.progress
-  );
-  const reduxFiftyFifty = useSelector(
+  const progress = useSelector((state: RootState) => state.progress.progress);
+  const fiftyfifty = useSelector(
     (state: RootState) => state.progress.fiftyFifty
   );
-  const reduxFriendCall = useSelector(
+  const friendCall = useSelector(
     (state: RootState) => state.progress.friendCall
   );
-  const reduxAudienceHelp = useSelector(
+  const audienceHelp = useSelector(
     (state: RootState) => state.progress.audienceHelp
   );
   const gameLost = useSelector((state: RootState) => state.progress.lostGame);
@@ -57,12 +55,12 @@ export default function Help({ friendAnswer, audiencePercentage }: HelpProps) {
         )}
         <div
           onClick={() => {
-            !reduxFiftyFifty.used &&
+            !fiftyfifty.used &&
               !gameLost &&
               dispatch(setFiftyFifty({ active: true, used: true }));
           }}
           className={
-            reduxFiftyFifty.used
+            fiftyfifty.used
               ? `${classes.help} ${classes.helpUsed}`
               : `${classes.help}`
           }
@@ -72,13 +70,13 @@ export default function Help({ friendAnswer, audiencePercentage }: HelpProps) {
 
         <div
           onClick={() => {
-            if (reduxProgress !== null && !reduxFriendCall.used && !gameLost) {
+            if (progress !== null && !friendCall.used && !gameLost) {
               handleOpen('friendCall');
               dispatch(setFriendCall({ used: true }));
             }
           }}
           className={
-            reduxFriendCall.used
+            friendCall.used
               ? `${classes.help} ${classes.helpUsed}`
               : `${classes.help}`
           }
@@ -87,17 +85,13 @@ export default function Help({ friendAnswer, audiencePercentage }: HelpProps) {
         </div>
         <div
           onClick={() => {
-            if (
-              reduxProgress !== null &&
-              !reduxAudienceHelp.used &&
-              !gameLost
-            ) {
+            if (progress !== null && !audienceHelp.used && !gameLost) {
               handleOpen('audienceHelp');
               dispatch(setAudienceHelp({ used: true }));
             }
           }}
           className={
-            reduxAudienceHelp.used
+            audienceHelp.used
               ? `${classes.help} ${classes.helpUsed}`
               : `${classes.help}`
           }

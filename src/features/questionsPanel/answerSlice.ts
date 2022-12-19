@@ -1,4 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  continueGame,
+  loseGame,
+  nextQuestion,
+  startGame,
+  winGame,
+} from '../progressPanel/progressSlice';
 
 interface Answer {
   answered: boolean;
@@ -37,6 +44,35 @@ const answerSlice = createSlice({
       const index: 0 | 1 | 2 | 3 = action.payload.index;
       state.clicked[index] = action.payload.clicked;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(startGame, (state) => {
+      state.highlighted = false;
+      state.answered = false;
+      for (let key in state.clicked) {
+        state.clicked[key] = false;
+      }
+    });
+    builder.addCase(continueGame, (state) => {
+      state.highlighted = false;
+      state.answered = false;
+      for (let key in state.clicked) {
+        state.clicked[key] = false;
+      }
+    });
+    builder.addCase(winGame, (state) => {
+      state.highlighted = true;
+    });
+    builder.addCase(nextQuestion, (state) => {
+      state.answered = false;
+      for (let key in state.clicked) {
+        state.clicked[key] = false;
+      }
+      state.highlighted = false;
+    });
+    builder.addCase(loseGame, (state) => {
+      state.highlighted = true;
+    });
   },
 });
 

@@ -1,4 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import {
   persistStore,
   persistReducer,
@@ -11,11 +12,10 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-// @ts-ignore
 import progressReducer from '../features/progressPanel/progressSlice';
-// @ts-ignore
+
 import answerReducer from '../features/questionsPanel/answerSlice';
-// @ts-ignore
+
 import incorrectAnswersSlice from '../features/questionsPanel/incorrectAnswersSlice';
 
 const rootReducer = combineReducers({
@@ -49,3 +49,6 @@ export const persistor = persistStore(store);
 export default store;
 
 export type RootState = ReturnType<typeof rootReducer>;
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
