@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/who-wants-to-be-a-millionaire/static/css/main.5eb5f504.css",
-    "main.js": "/who-wants-to-be-a-millionaire/static/js/main.e6649b9f.js",
+    "main.css": "/who-wants-to-be-a-millionaire/static/css/main.8a3ad168.css",
+    "main.js": "/who-wants-to-be-a-millionaire/static/js/main.69b0d01d.js",
     "static/media/494664 (1).webp": "/who-wants-to-be-a-millionaire/static/media/494664 (1).7681bb3e014ea38a280f.webp",
     "index.html": "/who-wants-to-be-a-millionaire/index.html",
-    "main.5eb5f504.css.map": "/who-wants-to-be-a-millionaire/static/css/main.5eb5f504.css.map",
-    "main.e6649b9f.js.map": "/who-wants-to-be-a-millionaire/static/js/main.e6649b9f.js.map"
+    "main.8a3ad168.css.map": "/who-wants-to-be-a-millionaire/static/css/main.8a3ad168.css.map",
+    "main.69b0d01d.js.map": "/who-wants-to-be-a-millionaire/static/js/main.69b0d01d.js.map"
   },
   "entrypoints": [
-    "static/css/main.5eb5f504.css",
-    "static/js/main.e6649b9f.js"
+    "static/css/main.8a3ad168.css",
+    "static/js/main.69b0d01d.js"
   ]
 }
