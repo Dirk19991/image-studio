@@ -2,6 +2,8 @@ import classNames from 'classnames/bind';
 import classes from '../features/progressPanel/Sums.module.css';
 import { Question } from '../features/progressPanel/Sums';
 
+// делает цвет номера вопроса, соответсвуюшего несгораемой сумме, белым
+
 export function mapQuestionNumbers(elem: Question) {
   const white = elem.id % 5 === 0;
 

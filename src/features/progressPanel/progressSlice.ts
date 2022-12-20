@@ -1,5 +1,4 @@
-import { RootState } from './../../store/index';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 interface Progress {
   progress: number | null;

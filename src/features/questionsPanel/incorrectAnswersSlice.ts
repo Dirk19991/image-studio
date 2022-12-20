@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface IncorrectAnswers {
-  number: number;
-  answers: string[];
+  number: number | null;
+  incorrectAnswers: string[];
 }
 
 const initialState: IncorrectAnswers = {
   number: 1,
-  answers: [],
+  incorrectAnswers: [],
 };
 
 const incorrectAnswersSlice = createSlice({
@@ -17,14 +17,14 @@ const incorrectAnswersSlice = createSlice({
     setAnswers(state, action) {
       if (
         state.number === action.payload.number &&
-        state.answers.length === 0
+        state.incorrectAnswers.length === 0
       ) {
-        state.answers = [...action.payload.answers];
+        state.incorrectAnswers = [...action.payload.incorrectAnswers];
       } else if (state.number === action.payload.number) {
         return;
       } else {
         state.number = action.payload.number;
-        state.answers = [...action.payload.answers];
+        state.incorrectAnswers = [...action.payload.incorrectAnswers];
       }
     },
   },

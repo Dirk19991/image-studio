@@ -2,6 +2,9 @@ import data from '../data/questions.json';
 import shuffle from './shuffle';
 import { Question } from '../features/progressPanel/Sums';
 
+// вычисляет вероятность правильного ответа при использовании помощи друга.
+// чем сложнее вопрос, тем меньше вероятность правильного ответа
+
 export default function calculateFriendAnswer(progress: number | null): string {
   if (progress === null) {
     return '';

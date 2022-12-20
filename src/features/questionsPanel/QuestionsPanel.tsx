@@ -17,11 +17,11 @@ interface QuestionsPanelProps {
 }
 
 export default function QuestionsPanel({ correctAnswer }: QuestionsPanelProps) {
+  const dispatch = useAppDispatch();
+
   const progress = useAppSelector((state) => state.progress.progress);
   const finishedGame = useAppSelector((state) => state.progress.finishedGame);
   const lostGame = useAppSelector((state) => state.progress.lostGame);
-  const dispatch = useAppDispatch();
-
   const friendAnswer = calculateFriendAnswer(progress);
   const audiencePercentage = calculateAudiencePercentage(progress);
 
@@ -70,11 +70,8 @@ export default function QuestionsPanel({ correctAnswer }: QuestionsPanelProps) {
         ) : (
           <div className={classes.mobile}>{formattedSum}</div>
         )}
-        {isMobile ? (
-          <div className={classes.header}>Вопрос {progress} / 15</div>
-        ) : (
-          <div className={classes.header}>Вопрос {progress}</div>
-        )}
+
+        <div className={classes.header}>Вопрос {progress} / 15</div>
 
         <Question />
         <div className={classes.answers}>

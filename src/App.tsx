@@ -28,9 +28,14 @@ function App() {
 
   const shuffledIncorrectAnswers = shuffle(shuffleData);
 
+  // когда переходим к очередному вопросу, диспатчим неправильные ответы
+  // в соответствующий слайс, эти данные будет использовать компонент Answer
   useEffect(() => {
     dispatch(
-      setAnswers({ number: progress, answers: shuffledIncorrectAnswers })
+      setAnswers({
+        number: progress,
+        incorrectAnswers: shuffledIncorrectAnswers,
+      })
     );
   }, [progress, shuffledIncorrectAnswers, dispatch]);
 
@@ -39,13 +44,12 @@ function App() {
       ? ''
       : data.filter((elem) => elem.id === progress)[0].correctAnswer;
 
+  const appStyles =
+    progress === null ? classes.wrapper : classes.questionsWrapper;
+
   return (
     <div className={classes.background}>
-      <div
-        className={
-          progress === null ? classes.wrapper : classes.questionsWrapper
-        }
-      >
+      <div className={appStyles}>
         {progress === null ? (
           <StartScreen />
         ) : (

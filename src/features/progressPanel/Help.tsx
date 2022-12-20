@@ -57,9 +57,11 @@ export default function Help({ friendAnswer, audiencePercentage }: HelpProps) {
   const fiftyFiftyStyles = fiftyfifty.used
     ? `${classes.help} ${classes.helpUsed}`
     : `${classes.help}`;
+
   const friendCallStyles = friendCall.used
     ? `${classes.help} ${classes.helpUsed}`
     : `${classes.help}`;
+
   const audienceHelpStyles = audienceHelp.used
     ? `${classes.help} ${classes.helpUsed}`
     : `${classes.help}`;

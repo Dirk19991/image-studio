@@ -24,7 +24,7 @@ export default function Answer({ answer, index, correctAnswer }: AnswerProps) {
   const answered = useAppSelector((state: RootState) => state.answer.answered);
   const clicked = useAppSelector((state) => state.answer.clicked[index]);
   const incorrectAnswers = useAppSelector(
-    (state) => state.incorrectAnswers.answers
+    (state) => state.incorrectAnswers.incorrectAnswers
   );
 
   const answerLetters = ['A', 'B', 'C', 'D'];

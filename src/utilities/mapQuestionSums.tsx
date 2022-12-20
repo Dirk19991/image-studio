@@ -1,6 +1,8 @@
 import { Question } from '../features/progressPanel/Sums';
 import classes from '../features/progressPanel/Sums.module.css';
 
+// форматирует стоимость вопроса запятыми и делает несгораемые суммы белыми
+
 export function mapQuestionSums(elem: Question) {
   return elem.id % 5 === 0 ? (
     <div key={elem.id} className={classes.white}>

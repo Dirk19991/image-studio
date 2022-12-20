@@ -1,3 +1,5 @@
+// вычисляет сумму выигрыша и форматирует ее с запятыми
+
 export default function calculatePrize(
   progress: number | null,
   lostGame: boolean
